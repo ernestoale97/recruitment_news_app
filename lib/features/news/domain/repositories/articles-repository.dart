@@ -1,5 +1,5 @@
-import 'package:recruitment/features/news/domain/entities/article-entity.dart';
+import 'package:recruitment/core/resources/fetch-news-response.dart';
 
 abstract class ArticleRepository {
-  Future<List<ArticleEntity>> getArticles();
+  Future<FetchNewsResponse> getArticles();
 }
