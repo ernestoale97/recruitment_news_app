@@ -14,5 +14,5 @@ class FetchNewsSuccess extends FetchNewsResponse {
 }
 
 class FetchNewsFailed extends FetchNewsResponse {
-  const FetchNewsFailed(HttpException error) : super(error: error);
+  const FetchNewsFailed(HttpException? error) : super(error: error);
 }

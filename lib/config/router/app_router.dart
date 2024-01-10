@@ -1,24 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recruitment/features/news/domain/entities/article-entity.dart';
-import 'package:recruitment/features/news/presentation/bloc/news-bloc.dart';
-import 'package:recruitment/features/news/presentation/pages/news-details-page.dart';
-import 'package:recruitment/features/news/presentation/pages/news-page.dart';
-import 'package:get_it/get_it.dart';
-
-T inject<T extends Object>() {
-  return GetIt.I.get<T>();
-}
+import 'package:recruitment/features/login/presentation/pages/login_page.dart';
+import 'package:recruitment/features/news/domain/entities/article_entity.dart';
+import 'package:recruitment/features/news/presentation/pages/news_details_page.dart';
+import 'package:recruitment/features/news/presentation/pages/news_page.dart';
 
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (_, __) => BlocProvider(
-        create: (_) => NewsBloc(inject()),
-        child:  NewsPage(),
-      ),
+      builder: (_, __) => const NewsPage(),
       routes: <RouteBase>[
         GoRoute(
           path: 'details',
@@ -30,5 +21,9 @@ final GoRouter router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+      path: '/login',
+      builder: (_, __) => const LoginPage(),
+    )
   ],
 );

@@ -1,8 +1,7 @@
 import 'dart:io';
-import 'package:recruitment/core/resources/fetch-news-response.dart';
-import 'package:recruitment/features/news/domain/repositories/articles-repository.dart';
-import '../../domain/entities/article-entity.dart';
-import '../data-sources/news-data-source.dart';
+import 'package:recruitment/core/resources/fetch_news_response.dart';
+import 'package:recruitment/features/news/domain/repositories/articles_repository.dart';
+import '../data_sources/news_data_source.dart';
 
 class ArticlesRepositoryImplementation implements ArticleRepository {
   const ArticlesRepositoryImplementation(this._newsDataSource);

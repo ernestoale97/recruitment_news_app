@@ -5,3 +5,5 @@ const String newsQueryCountry = 'us';
 const String newsQueryCategory = 'technology';
 const String defaultImage =
     "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg";
+
+const String loginApiUrl = "http://192.168.172.184:7200";

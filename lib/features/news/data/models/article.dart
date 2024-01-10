@@ -1,10 +1,12 @@
 import 'package:recruitment/core/constants/constants.dart';
+import 'package:recruitment/features/news/domain/entities/article_source.dart';
 
-import '../../domain/entities/article-entity.dart';
+import '../../domain/entities/article_entity.dart';
 
 class Article extends ArticleEntity {
   const Article({
     int? id,
+    ArticleSource? source,
     String? author,
     String? title,
     String? description,
@@ -14,6 +16,7 @@ class Article extends ArticleEntity {
     String? content,
   }) : super(
     id: id,
+    source: source,
     author: author,
     title: title,
     description: description,
@@ -25,6 +28,7 @@ class Article extends ArticleEntity {
 
   factory Article.fromJson(Map<String, dynamic> map) {
     return Article(
+      source: ArticleSource.fromJson(map['source']),
       author: map['author'] ?? "",
       title: map['title'] ?? "",
       description: map['description'] ?? "",
@@ -38,6 +42,7 @@ class Article extends ArticleEntity {
   factory Article.fromEntity(ArticleEntity entity) {
     return Article(
         id: entity.id,
+        source: entity.source,
         author: entity.author,
         title: entity.title,
         description: entity.description,

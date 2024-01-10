@@ -3,8 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:recruitment/core/constants/constants.dart';
-import 'package:recruitment/features/news/domain/entities/article-entity.dart';
+import 'package:recruitment/features/news/domain/entities/article_entity.dart';
+
+import '../../../../core/resources/utils.dart';
 
 class ArticleTile extends StatelessWidget {
   final ArticleEntity article;
@@ -97,8 +98,8 @@ class ArticleTile extends StatelessWidget {
                   child: SizedBox(
                     width: 112,
                     child: Text(
-                      convertToAgo(article.publishedAt!),
-                      style: TextStyle(
+                      Utils.convertToAgo(article.publishedAt!),
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                         fontFamily: 'SF Pro',
@@ -115,27 +116,5 @@ class ArticleTile extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-String convertToAgo(String dateTime) {
-  try {
-    DateTime input =
-    DateFormat('yyyy-MM-DDTHH:mm:ssZ').parse(dateTime, true);
-    Duration diff = DateTime.now().difference(input);
-
-    if (diff.inDays >= 1) {
-      return '${diff.inDays} day${diff.inDays == 1 ? '' : 's'} ago';
-    } else if (diff.inHours >= 1) {
-      return '${diff.inHours} hour${diff.inHours == 1 ? '' : 's'} ago';
-    } else if (diff.inMinutes >= 1) {
-      return '${diff.inMinutes} minute${diff.inMinutes == 1 ? '' : 's'} ago';
-    } else if (diff.inSeconds >= 1) {
-      return '${diff.inSeconds} second${diff.inSeconds == 1 ? '' : 's'} ago';
-    } else {
-      return 'just now';
-    }
-  } catch(_) {
-    return dateTime;
   }
 }

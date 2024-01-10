@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:recruitment/core/constants/constants.dart';
-import 'package:recruitment/core/resources/fetch-news-response.dart';
+import 'package:recruitment/core/resources/fetch_news_response.dart';
 import 'package:recruitment/features/news/data/models/article.dart';
-import 'package:recruitment/features/news/domain/entities/article-entity.dart';
 
 class NewsDataSource {
   Future<FetchNewsResponse> getArticles() async {
