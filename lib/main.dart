@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recruitment/features/enable_totp/presentation/bloc/enable_totp_bloc.dart';
 import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_event.dart';
 
@@ -21,7 +22,7 @@ class AppState extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LoginBloc>(
-          create: (_) => LoginBloc(inject())..add(CheckLoggedInEvent()),
+          create: (_) => LoginBloc(inject(), inject(), inject())..add(CheckLoggedInEvent()),
         ),
         BlocProvider<NewsBloc>(
           create: (_) => NewsBloc(inject()),

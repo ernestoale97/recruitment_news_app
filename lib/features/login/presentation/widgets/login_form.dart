@@ -9,6 +9,8 @@ import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';
 import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
 import 'package:recruitment/features/login/presentation/widgets/text_input.dart';
+import 'package:recruitment/features/news/presentation/bloc/news_bloc.dart';
+import 'package:recruitment/features/news/presentation/bloc/news_event.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -33,6 +35,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     final LoginBloc loginBloc = BlocProvider.of(context);
+    final NewsBloc newsBloc = BlocProvider.of(context);
     return Form(
       key: _formKey,
       child: Padding(
@@ -81,8 +84,11 @@ class _LoginFormState extends State<LoginForm> {
                     content: Text("TOTP is required"),
                   ));
                 }
-                if (state is LoginSuccess) {
-                    context.go("/");
+                if (state is LoginSuccess || state is LoggedInState) {
+                  newsBloc.add(
+                      FetchNewsEvent()
+                  );
+                  context.go("/");
                 }
               },
               builder: (context, state) {

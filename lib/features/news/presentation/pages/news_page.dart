@@ -39,16 +39,19 @@ class _NewsPageState extends State<NewsPage> {
     final NewsBloc newsBloc = BlocProvider.of(context);
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (BuildContext context, LoginState state) {
-        if (state is LoggedOutState) {
-          context.go("/login");
-        }
-        if (state is LoginSuccess) {
+        if (state is LoggedInState) {
           newsBloc.add(FetchNewsEvent());
+        }
+        if (state is LoggedOutState || state is LogoutSuccessState) {
+          context.go("/login");
         }
       },
       builder: (context, state) {
-        if (state is LoginInitial) {
-          return const SizedBox(height: 0);
+        final LoginBloc loginBloc = BlocProvider.of(context);
+        if (state is LoginInitial || state is LoggedOutState) {
+          return const Scaffold(
+            body: SizedBox(height: 0),
+          );
         }
         return Container(
           height: 400,
@@ -69,6 +72,7 @@ class _NewsPageState extends State<NewsPage> {
             backgroundColor: const Color(0x00000000),
             appBar: AppBar(
               elevation: 0,
+              toolbarHeight: 80,
               backgroundColor: AppColors.blue,
               leading: Builder(builder: (BuildContext context) {
                 return IconButton(
@@ -82,8 +86,11 @@ class _NewsPageState extends State<NewsPage> {
               centerTitle: true,
               actions: [
                 IconButton(
-                  icon: const FaIcon(FontAwesomeIcons.userCheck, color: Colors.white),
+                  icon: const FaIcon(FontAwesomeIcons.doorOpen, color: Colors.white),
                   onPressed: () {
+                    loginBloc.add(
+                        LogoutRequestEvent()
+                    );
                     context.go("/login");
                   },
                 )
@@ -97,8 +104,8 @@ class _NewsPageState extends State<NewsPage> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
+                        topLeft: Radius.circular(25),
+                        topRight: Radius.circular(25),
                       ),
                       color: Colors.white,
                       boxShadow: [
@@ -111,7 +118,7 @@ class _NewsPageState extends State<NewsPage> {
                       ],
                     ),
                     padding: const EdgeInsets.all(10),
-                    margin: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(2),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -123,7 +130,7 @@ class _NewsPageState extends State<NewsPage> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.78,
+                          height: MediaQuery.of(context).size.height * 0.67,
                           child: BlocBuilder<NewsBloc, NewsState>(
                             bloc: newsBloc,
                             builder: (context, state) {

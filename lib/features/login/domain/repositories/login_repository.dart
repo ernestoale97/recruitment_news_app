@@ -3,4 +3,6 @@ import 'package:recruitment/features/login/domain/entities/login_form.dart';
 
 abstract class LoginRepository {
   Future<LoginResponse> login(LoginFormEntity loginForm);
+  Future<void> logout();
+  Future<String?> getToken();
 }

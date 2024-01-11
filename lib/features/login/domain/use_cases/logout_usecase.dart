@@ -3,11 +3,11 @@ import 'package:recruitment/features/login/domain/repositories/login_repository.
 
 import '../entities/login_form.dart';
 
-class LoginUseCase {
+class LogoutUseCase {
   final LoginRepository repository;
-  LoginUseCase(this.repository);
+  LogoutUseCase(this.repository);
 
-  Future<LoginResponse> call(LoginFormEntity loginForm) async {
-    return await repository.login(loginForm);
+  Future<void> call() async {
+    return await repository.logout();
   }
 }

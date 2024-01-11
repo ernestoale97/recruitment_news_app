@@ -4,6 +4,11 @@ abstract class LoginState extends Equatable {
   const LoginState();
 }
 
+class LogoutSuccessState extends LoginState {
+  @override
+  List<Object> get props => [];
+}
+
 class LoggedOutState extends LoginState {
   @override
   List<Object> get props => [];

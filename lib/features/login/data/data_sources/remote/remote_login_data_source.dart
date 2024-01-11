@@ -4,10 +4,10 @@ import 'dart:io';
 import 'package:recruitment/core/resources/login_response.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';
 
-import '../../../../core/constants/constants.dart';
+import '../../../../../core/constants/constants.dart';
 import 'package:http/http.dart' as http;
 
-class LoginDataSource {
+class RemoteLoginDataSource {
   Future<LoginResponse> login(LoginFormEntity loginForm) async {
     try {
       final uri = Uri.parse("$loginApiUrl/login");

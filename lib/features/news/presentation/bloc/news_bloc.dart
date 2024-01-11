@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/repositories/articles_repository.dart';
 import 'news_event.dart';
@@ -10,6 +12,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   }
 
   Future<void> _fetchNews(FetchNewsEvent event, Emitter<NewsState> emit) async {
+    log("fetch");
     emit(FetchingNewsState());
     try {
       final data = await _articleRepository.getArticles();
