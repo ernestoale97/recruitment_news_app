@@ -1,13 +1,15 @@
-import 'package:recruitment/core/resources/login_response.dart';
 import 'package:recruitment/features/login/domain/repositories/login_repository.dart';
-
-import '../entities/login_form.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 
 class CheckLoggedInUseCase {
   final LoginRepository repository;
   CheckLoggedInUseCase(this.repository);
 
-  Future<String?> call() async {
-    return await repository.getToken();
+  Future<bool> call() async {
+    String? token = await repository.getToken();
+    if (token == null) {
+      return false;
+    }
+    return !Jwt.isExpired(token);
   }
 }

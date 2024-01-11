@@ -10,6 +10,7 @@ import 'package:recruitment/features/login/data/repositories/login_repository_im
 import 'package:recruitment/features/login/domain/repositories/login_repository.dart';
 import 'package:recruitment/features/login/domain/use_cases/check_logged_in_usecase.dart';
 import 'package:recruitment/features/login/domain/use_cases/login_usecase.dart';
+import 'package:recruitment/features/login/domain/use_cases/verify_otp_usecase.dart';
 import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
 import 'package:recruitment/features/news/data/repositories/articles_repository_implementation.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_bloc.dart';
@@ -29,7 +30,7 @@ Future<void> initializeDependencies() async {
   // Data sources
   sl.registerSingleton<NewsDataSource>(NewsDataSource());
   sl.registerSingleton<LocalLoginDataSource>(LocalLoginDataSource(sl()));
-  sl.registerSingleton<RemoteLoginDataSource>(RemoteLoginDataSource());
+  sl.registerSingleton<RemoteLoginDataSource>(RemoteLoginDataSource(sl()));
   sl.registerSingleton<EnableTotpDataSource>(EnableTotpDataSource(sl()));
   // Repository
   sl.registerLazySingleton<ArticleRepository>(() => ArticlesRepositoryImplementation(sl()));
@@ -37,11 +38,12 @@ Future<void> initializeDependencies() async {
   sl.registerLazySingleton<EnableTotpRepository>(() => EnableTotpRepositoryImpl(sl()));
   // UseCases
   sl.registerSingleton<LoginUseCase>(LoginUseCase(sl()));
+  sl.registerSingleton<VerifyOtpUseCase>(VerifyOtpUseCase(sl()));
   sl.registerSingleton<LogoutUseCase>(LogoutUseCase(sl()));
   sl.registerSingleton<CheckLoggedInUseCase>(CheckLoggedInUseCase(sl()));
   // Blocs
   sl.registerFactory(() => NewsBloc(sl()));
-  sl.registerFactory(() => LoginBloc(sl(), sl(), sl()));
+  sl.registerFactory(() => LoginBloc(sl(), sl(), sl(), sl()));
   sl.registerFactory(() => EnableTotpBloc(sl()));
   // Storage
 }

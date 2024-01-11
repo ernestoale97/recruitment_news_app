@@ -12,7 +12,7 @@ import '../../../../core/resources/activate_totp_response.dart';
 import '../../../../core/resources/generate_totp_response.dart';
 
 class EnableTotpDataSource {
-  LocalLoginDataSource _localLoginDataSource;
+  final LocalLoginDataSource _localLoginDataSource;
   EnableTotpDataSource(this._localLoginDataSource);
 
   Future<ActivateTotpResponse> activateTotp(String totp) async {
@@ -27,7 +27,7 @@ class EnableTotpDataSource {
             "Authorization": "Bearer $token"
           },
           body: json.encode({
-            "totp": totp,
+            "totp": int.parse(totp),
           })
       );
       final body = response.body != "" ? jsonDecode(response.body) : "";

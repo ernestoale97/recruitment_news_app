@@ -4,6 +4,29 @@ abstract class LoginState extends Equatable {
   const LoginState();
 }
 
+// Totp Verification
+class VerifyingTotpState extends LoginState {
+  @override
+  List<Object> get props => [];
+}
+
+class VerifiedTotpState extends LoginState {
+  @override
+  List<Object> get props => [];
+}
+
+class VerifyFailTotpState extends LoginState {
+  final String message;
+  const VerifyFailTotpState(this.message);
+
+  @override
+  List<Object> get props => [
+    message
+  ];
+}
+// Totp Verification
+
+
 class LogoutSuccessState extends LoginState {
   @override
   List<Object> get props => [];

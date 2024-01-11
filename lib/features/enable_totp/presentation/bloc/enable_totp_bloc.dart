@@ -38,10 +38,10 @@ class EnableTotpBloc extends Bloc<EnableTotpEvent, EnableTotpState> {
         emit(ActivatedTotpState());
       }
       if (data is ActivateTotpFailResponse) {
-        emit(ActivateTotpFailedState());
+        emit(ActivateTotpFailedState(data.message));
       }
     } on Object catch (e) {
-      emit(ActivateTotpFailedState());
+      emit(ActivateTotpFailedState(e.toString()));
     }
   }
 }

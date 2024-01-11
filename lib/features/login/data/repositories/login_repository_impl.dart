@@ -27,12 +27,22 @@ class LoginRepositoryImpl implements LoginRepository {
   }
 
   @override
-  Future<String?> getToken() {
-    return _localLoginDataSource.getAccessToken();
+  Future<LoginResponse> verifyOtp(int totp) async {
+    LoginResponse response = await _remoteLoginDataSource.verifyTotp(totp);
+    if (response is LoginSuccessResponse) {
+      await _localLoginDataSource.clearStorage();
+      await _localLoginDataSource.saveAccessToken(response.accessToken);
+    }
+    return response;
   }
 
   @override
   Future<void> logout() async {
     _localLoginDataSource.clearStorage();
+  }
+
+  @override
+  Future<String?> getToken() {
+    return _localLoginDataSource.getAccessToken();
   }
 }

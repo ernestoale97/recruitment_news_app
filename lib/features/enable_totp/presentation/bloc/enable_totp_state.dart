@@ -21,4 +21,7 @@ class ActivatingTotpState extends EnableTotpState {}
 
 class ActivatedTotpState extends EnableTotpState {}
 
-class ActivateTotpFailedState extends EnableTotpState {}
+class ActivateTotpFailedState extends EnableTotpState {
+  String message;
+  ActivateTotpFailedState(this.message);
+}

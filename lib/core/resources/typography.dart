@@ -12,7 +12,7 @@ class AppTypography {
        color: Colors.black87, fontSize: 22, fontWeight: FontWeight.bold
    );
    static TextStyle h3TitleBlack = GoogleFonts.lato(
-       color: Colors.black87, fontSize: 19, fontWeight: FontWeight.bold
+       color: Colors.black87, fontSize: 17, fontWeight: FontWeight.bold
    );
    static TextStyle h2TitleWhite = GoogleFonts.lato(
        color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold

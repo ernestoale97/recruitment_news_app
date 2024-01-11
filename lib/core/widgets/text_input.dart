@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/core/resources/typography.dart';
 
@@ -9,6 +10,8 @@ class AppTextInput extends StatefulWidget {
   final String? Function(dynamic value) validator;
   final TextInputType inputType;
   final bool obscureText;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextAlign textAlign;
   const AppTextInput({
     super.key,
     required this.controller,
@@ -16,6 +19,8 @@ class AppTextInput extends StatefulWidget {
     required this.validator,
     this.inputType = TextInputType.text,
     this.obscureText = false,
+    this.inputFormatters = const [],
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -26,7 +31,9 @@ class _AppTextInputState extends State<AppTextInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: widget.inputFormatters,
       controller: widget.controller,
+      textAlign: widget.textAlign,
       obscureText: widget.obscureText,
       decoration: InputDecoration(
           border: InputBorder.none,

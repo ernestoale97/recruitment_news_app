@@ -22,10 +22,9 @@ class AppState extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LoginBloc>(
-          create: (_) => LoginBloc(inject(), inject(), inject())..add(CheckLoggedInEvent()),
-        ),
-        BlocProvider<NewsBloc>(
-          create: (_) => NewsBloc(inject()),
+          create: (_) => LoginBloc(inject(), inject(), inject(), inject())..add(
+              CheckLoggedInEvent()
+          ),
         ),
       ], child: const MyApp(),
     );

@@ -6,9 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recruitment/core/resources/colors.dart';
+import 'package:recruitment/core/widgets/app_custom_button.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';
 import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
-import 'package:recruitment/features/login/presentation/widgets/text_input.dart';
+import 'package:recruitment/core/widgets/text_input.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_bloc.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_event.dart';
 
@@ -33,9 +34,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     final LoginBloc loginBloc = BlocProvider.of(context);
-    final NewsBloc newsBloc = BlocProvider.of(context);
     return Form(
       key: _formKey,
       child: Padding(
@@ -80,49 +79,32 @@ class _LoginFormState extends State<LoginForm> {
                   ));
                 }
                 if (state is LoginTotpRequired) {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("TOTP is required"),
-                  ));
+                  context.go("/login/verify-totp");
                 }
                 if (state is LoginSuccess || state is LoggedInState) {
-                  newsBloc.add(
+                  /*newsBloc.add(
                       FetchNewsEvent()
-                  );
+                  );*/
                   context.go("/");
                 }
               },
               builder: (context, state) {
                 if (state is LoginSending) {
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 }
-                return GestureDetector(
-                  onTap: () {
-                    loginBloc.add(
-                        LoginRequestEvent(
-                            loginForm: LoginFormEntity(
-                              email: _emailController.text,
-                              password: _passwordController.text,
-                            )
-                        )
-                    );
-                  },
-                  child: Container(
-                    width: width * 0.87,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff1f41bb),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15),
-                      child: Text(
-                        'Sign in',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(decoration: TextDecoration.none, fontSize: 20, color: Color(0xffffffff), fontFamily: 'Poppins-SemiBold', fontWeight: FontWeight.normal),
-                        maxLines: 9999,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ),
+                return AppCustomButton(
+                    onTap: () {
+                      loginBloc.add(
+                          LoginRequestEvent(
+                              loginForm: LoginFormEntity(
+                                email: _emailController.text,
+                                password: _passwordController.text,
+                              )
+                          )
+                      );
+                    },
+                    width: MediaQuery.of(context).size.width * 0.87,
+                    text: "Sign In",
                 );
               },
             )
