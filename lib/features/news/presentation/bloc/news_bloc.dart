@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recruitment/features/news/domain/use_cases/fetch_news_usecase.dart';
-import '../../domain/repositories/news_repository.dart';
 import 'news_event.dart';
 import 'news_state.dart';
 
@@ -15,7 +14,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     try {
       final data = await _fetchNewsUseCase.call();
       emit(FetchedNewsState(data.data!));
-    } on Object catch (e) {
+    } on Object catch (_) {
       emit(FetchFailNewsState());
     }
   }
