@@ -81,7 +81,7 @@ class ArticleTile extends StatelessWidget {
                     width: 303,
                     child: Text(
                       article.title!,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color(0xFF222222),
                         fontSize: 20,
                         fontFamily: 'Archivo',
@@ -89,6 +89,7 @@ class ArticleTile extends StatelessWidget {
                         height: 0,
                         letterSpacing: -0.90,
                       ),
+                      maxLines: 2,
                     ),
                   ),
                 ),

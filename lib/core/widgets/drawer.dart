@@ -42,20 +42,12 @@ class _AppDrawerState extends State<AppDrawer> {
                     'images/profile.png',
                   ), //For Image Asset
                 ),
-                accountName: Text(''),
-                accountEmail: Text(
+                accountName: const Text(''),
+                accountEmail: const Text(
                   "Bienvenido",
-                  style: const TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.black),
                 ),
               );
-            },
-          ),
-          ListTile(
-            leading: const FaIcon(FontAwesomeIcons.faceSmile),
-            title: Text('Perfil', style: AppTypography.h3TitleBlack,),
-            onTap: () {
-              // Update the state of the app.
-              // ...
             },
           ),
           ListTile(

@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:recruitment/core/resources/fetch_news_response.dart';
+import 'package:recruitment/features/news/data/models/fetch_news_response.dart';
 import 'package:recruitment/features/news/domain/repositories/articles_repository.dart';
 import '../data_sources/news_data_source.dart';
 

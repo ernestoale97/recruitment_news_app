@@ -3,10 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_event.dart';
-
-import '../get_it/get_it.dart';
 import '../../features/login/presentation/bloc/login_bloc.dart';
-import '../../features/news/domain/repositories/articles_repository.dart';
 import '../../features/news/presentation/bloc/news_bloc.dart';
 
 class AppNavigationBar extends StatefulWidget {
@@ -28,6 +25,9 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
             FetchNewsEvent(),
           );
         }
+        if(index == 1) {
+          context.go("/settings");
+        }
         if(index == 2) {
           loginBloc.add(
               LogoutRequestEvent()
@@ -41,8 +41,8 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
           label: 'Noticias',
         ),
         BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.bell),
-          label: 'Novedades',
+          icon: FaIcon(FontAwesomeIcons.gear),
+          label: 'Preferencias',
         ),
         BottomNavigationBarItem(
           icon: FaIcon(FontAwesomeIcons.doorOpen),

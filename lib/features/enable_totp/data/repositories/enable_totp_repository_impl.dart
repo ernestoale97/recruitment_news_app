@@ -1,5 +1,5 @@
-import 'package:recruitment/core/resources/activate_totp_response.dart';
-import 'package:recruitment/core/resources/generate_totp_response.dart';
+import 'package:recruitment/features/enable_totp/data/models/activate_totp_response.dart';
+import 'package:recruitment/features/enable_totp/data/models/generate_totp_response.dart';
 
 import '../../domain/repositories/enable_totp_repository.dart';
 import '../data_sources/enable_totp_data_source.dart';
