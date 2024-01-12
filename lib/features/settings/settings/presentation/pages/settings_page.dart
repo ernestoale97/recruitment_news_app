@@ -2,10 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recruitment/features/settings/presentation/widgets/settings_tile.dart';
-
-import '../../../../core/resources/colors.dart';
-import '../../../../core/resources/typography.dart';
+import 'package:recruitment/features/settings/settings/presentation/widgets/settings_tile.dart';
+import 'package:recruitment/core/resources/colors.dart';
+import 'package:recruitment/core/resources/typography.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

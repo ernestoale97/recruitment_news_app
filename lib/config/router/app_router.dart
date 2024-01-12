@@ -5,9 +5,9 @@ import 'package:recruitment/features/login/presentation/pages/totp_verify_page.d
 import 'package:recruitment/features/news/domain/entities/article_entity.dart';
 import 'package:recruitment/features/news/presentation/pages/news_details_page.dart';
 import 'package:recruitment/features/news/presentation/pages/news_page.dart';
-import 'package:recruitment/features/settings/presentation/pages/settings_page.dart';
 import 'package:recruitment/features/signup/presentation/pages/signup_page.dart';
-import '../../features/enable_totp/presentation/pages/enable_totp_page.dart';
+import 'package:recruitment/features/settings/enable_totp/presentation/pages/enable_totp_page.dart';
+import 'package:recruitment/features/settings/settings/presentation/pages/settings_page.dart';
 
 final GoRouter router = GoRouter(
   routes: [

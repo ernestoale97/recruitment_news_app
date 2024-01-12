@@ -14,14 +14,14 @@ import 'package:recruitment/features/signup/data/data_sources/signup_data_source
 import 'package:recruitment/features/signup/data/repositories/signup_repository_impl.dart';
 import 'package:recruitment/features/signup/domain/repositories/signup_repository.dart';
 import 'package:recruitment/features/signup/presentation/bloc/signup_bloc.dart';
-import '../../features/enable_totp/data/data_sources/enable_totp_data_source.dart';
-import '../../features/enable_totp/data/repositories/enable_totp_repository_impl.dart';
-import '../../features/enable_totp/domain/repositories/enable_totp_repository.dart';
-import '../../features/enable_totp/presentation/bloc/enable_totp_bloc.dart';
-import '../../features/login/domain/use_cases/logout_usecase.dart';
-import '../../features/news/data/data_sources/news_data_source.dart';
-import '../../features/news/domain/repositories/articles_repository.dart';
-import '../../features/signup/domain/use_cases/signup_usecase.dart';
+import 'package:recruitment/features/login/domain/use_cases/logout_usecase.dart';
+import 'package:recruitment/features/news/data/data_sources/news_data_source.dart';
+import 'package:recruitment/features/news/domain/repositories/articles_repository.dart';
+import 'package:recruitment/features/settings/enable_totp/data/data_sources/enable_totp_data_source.dart';
+import 'package:recruitment/features/settings/enable_totp/data/repositories/enable_totp_repository_impl.dart';
+import 'package:recruitment/features/settings/enable_totp/domain/repositories/enable_totp_repository.dart';
+import 'package:recruitment/features/settings/enable_totp/presentation/bloc/enable_totp_bloc.dart';
+import 'package:recruitment/features/signup/domain/use_cases/signup_usecase.dart';
 
 final sl = GetIt.instance;
 
