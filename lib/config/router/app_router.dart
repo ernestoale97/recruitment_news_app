@@ -6,8 +6,8 @@ import 'package:recruitment/features/news/domain/entities/article_entity.dart';
 import 'package:recruitment/features/news/presentation/pages/news_details_page.dart';
 import 'package:recruitment/features/news/presentation/pages/news_page.dart';
 import 'package:recruitment/features/settings/presentation/pages/settings_page.dart';
-
-import '../../features/enable_totp/presentation/pages/enable_totp_page.dart';
+import 'package:recruitment/features/signup/presentation/pages/signup_page.dart';
+import '../../features/settings/enable_totp/presentation/pages/enable_totp_page.dart';
 
 final GoRouter router = GoRouter(
   routes: [
@@ -24,30 +24,34 @@ final GoRouter router = GoRouter(
           },
         ),
         GoRoute(
-          path: 'settings',
-          builder: (BuildContext context, GoRouterState state) {
-            return const SettingsPage();
-          },
-          routes: <RouteBase>[
-            GoRoute(
-              path: 'activate_totp',
-              builder: (BuildContext context, GoRouterState state) {
-                return const EnableTotpPage();
-              },
-            )
-          ]
+            path: 'settings',
+            builder: (BuildContext context, GoRouterState state) {
+              return const SettingsPage();
+            },
+            routes: <RouteBase>[
+              GoRoute(
+                path: 'activate_totp',
+                builder: (BuildContext context, GoRouterState state) {
+                  return const EnableTotpPage();
+                },
+              )
+            ]
         ),
       ],
     ),
     GoRoute(
-      path: '/login',
-      builder: (_, __) => const LoginPage(),
-      routes: [
-        GoRoute(
+        path: '/login',
+        builder: (_, __) => const LoginPage(),
+        routes: [
+          GoRoute(
             path: 'verify-totp',
             builder: (_, __) => const TotpVerifyPage(),
-        )
-      ]
-    )
+          ),
+          GoRoute(
+              path: 'signup',
+              builder: (_, __) => const SignupPage()
+          )
+        ]
+    ),
   ],
 );

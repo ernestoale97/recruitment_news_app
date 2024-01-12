@@ -8,7 +8,7 @@ import 'package:recruitment/features/news/data/models/article.dart';
 class NewsDataSource {
   Future<FetchNewsResponse> getArticles() async {
     try {
-      final uri = Uri.parse("$newsApiUrl/top-headlines?country=$newsQueryCountry&apiKey=$newsApiKey");
+      final uri = Uri.parse("$newsApiUrl/top-headlines?country=$newsQueryCountry&category=$newsQueryCategory&apiKey=$newsApiKey");
       http.Response response = await http.get(uri);
       final body = jsonDecode(response.body);
       List<Article> articles = List<Article>.from(body["articles"].map((x) => Article.fromJson(x)));

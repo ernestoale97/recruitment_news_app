@@ -28,8 +28,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Future<void> _checkLoggedIn(CheckLoggedInEvent event, Emitter<LoginState> emit) async {
     try {
       final response = await _checkLoggedInUseCase.call();
-      if (response) {
-        emit(LoggedInState());
+      if (response != null) {
+        emit(LoggedInState(response.email!));
       } else {
         emit(LoggedOutState());
       }
@@ -43,7 +43,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       final response = await _loginUseCase.call(event.loginForm);
       if (response is LoginSuccessResponse) {
-        emit(LoginSuccess());
+        emit(LoginSuccess(response.userEmail));
       } else if (response is LoginTotpRequiredResponse) {
         emit(LoginTotpRequired());
       } else if (response is LoginErrorResponse) {
@@ -62,14 +62,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       final response = await _verifyOtpUseCase.call(event.totp);
       if (response is LoginSuccessResponse) {
-        emit(VerifiedTotpState());
+        emit(VerifiedTotpState(response.userEmail));
       } else if (response is LoginErrorResponse) {
         emit(VerifyFailTotpState(response.message));
       }
     } on Object catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
       emit(const VerifyFailTotpState("There was an error while trying to verify 2FA"));
     }
   }

@@ -1,15 +1,13 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
-
-import 'package:recruitment/core/resources/login_response.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:recruitment/features/login/data/data_sources/local/local_login_data_source.dart';
-import 'package:recruitment/features/login/domain/entities/login_form.dart';
-
-import '../../../../core/constants/constants.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../../core/resources/activate_totp_response.dart';
-import '../../../../core/resources/generate_totp_response.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/resources/activate_totp_response.dart';
+import '../../../../../core/resources/generate_totp_response.dart';
 
 class EnableTotpDataSource {
   final LocalLoginDataSource _localLoginDataSource;
@@ -17,9 +15,12 @@ class EnableTotpDataSource {
 
   Future<ActivateTotpResponse> activateTotp(String totp) async {
     try {
-      const userUuid = "af7206c5-58c5-46f2-9bc5-2cf942e036da";
       String? token =  await _localLoginDataSource.getAccessToken();
-      final uri = Uri.parse("$loginApiUrl/users/$userUuid/totp");
+      if (token == null) {
+        return ActivateTotpFailResponse(message: "Token is missing");
+      }
+      var tokenClaims = Jwt.parseJwt(token);
+      final uri = Uri.parse("$loginApiUrl/users/${tokenClaims["sub"]}/totp");
       http.Response response = await http.post(
           uri,
           headers: {
@@ -41,9 +42,13 @@ class EnableTotpDataSource {
   }
   Future<GenerateTotpResponse> generateTotp() async {
     try {
-      const userUuid = "af7206c5-58c5-46f2-9bc5-2cf942e036da";
       String? token =  await _localLoginDataSource.getAccessToken();
-      final uri = Uri.parse("$loginApiUrl/users/$userUuid/totp");
+      if (token == null) {
+        return GenerateFailResponse(message: "Token is missing");
+      }
+      var tokenClaims = Jwt.parseJwt(token);
+      log(tokenClaims.toString());
+      final uri = Uri.parse("$loginApiUrl/users/${tokenClaims["sub"]}/totp");
       http.Response response = await http.get(
         uri,
         headers: {

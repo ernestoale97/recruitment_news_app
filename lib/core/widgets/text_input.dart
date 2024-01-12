@@ -12,6 +12,8 @@ class AppTextInput extends StatefulWidget {
   final bool obscureText;
   final List<TextInputFormatter>? inputFormatters;
   final TextAlign textAlign;
+  final Function(String)? onChanged;
+
   const AppTextInput({
     super.key,
     required this.controller,
@@ -21,6 +23,7 @@ class AppTextInput extends StatefulWidget {
     this.obscureText = false,
     this.inputFormatters = const [],
     this.textAlign = TextAlign.start,
+    this.onChanged
   });
 
   @override
@@ -31,6 +34,7 @@ class _AppTextInputState extends State<AppTextInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
       inputFormatters: widget.inputFormatters,
       controller: widget.controller,
       textAlign: widget.textAlign,

@@ -11,8 +11,13 @@ class VerifyingTotpState extends LoginState {
 }
 
 class VerifiedTotpState extends LoginState {
+  final String email;
+  const VerifiedTotpState(this.email);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [
+    email
+  ];
 }
 
 class VerifyFailTotpState extends LoginState {
@@ -38,8 +43,13 @@ class LoggedOutState extends LoginState {
 }
 
 class LoggedInState extends LoginState {
+  final String email;
+  const LoggedInState(this.email);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [
+    email
+  ];
 }
 
 class LoginInitial extends LoginState {
@@ -66,6 +76,11 @@ class LoginTotpRequired extends LoginState {
 }
 
 class LoginSuccess extends LoginState {
+  final String email;
+  const LoginSuccess(this.email);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [
+    email
+  ];
 }

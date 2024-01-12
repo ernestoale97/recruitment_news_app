@@ -4,14 +4,14 @@ abstract class LoginResponse extends Equatable {}
 
 class LoginSuccessResponse extends LoginResponse {
   final String accessToken;
-  final bool mfaRequired;
+  final String userEmail;
 
-  LoginSuccessResponse({required this.accessToken, required this.mfaRequired});
+  LoginSuccessResponse({required this.accessToken, required this.userEmail});
 
   @override
   List<Object?> get props => [
     accessToken,
-    mfaRequired
+    userEmail
   ];
 }
 

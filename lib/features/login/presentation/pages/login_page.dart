@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/core/resources/typography.dart';
 import 'package:recruitment/features/login/presentation/widgets/login_form.dart';
@@ -15,6 +17,10 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          toolbarHeight: 0,
+        ),
         body: Container(
           color: Colors.white,
           child: Container(
@@ -28,26 +34,27 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'Login',
-                  textAlign: TextAlign.center,
-                  style: AppTypography.h1TitleBlack,
-                ),
-                Text(
-                  'Welcome back!',
-                  textAlign: TextAlign.center,
-                  style: AppTypography.h3TitleBlack,
-                  maxLines: 9999,
-                  overflow: TextOverflow.ellipsis,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const FaIcon(FontAwesomeIcons.newspaper, size: 40),
+                    const SizedBox(width: 10),
+                    Text("News", style: AppTypography.h1TitleBlack)
+                  ],
                 ),
                 const LoginForm(),
-                const Text("- OR -"),
-                const Text(
-                  'Create new account',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(decoration: TextDecoration.none, fontSize: 14, color: Color(0xff494949), fontFamily: 'Poppins-SemiBold', fontWeight: FontWeight.normal),
-                  maxLines: 9999,
-                  overflow: TextOverflow.ellipsis,
+                Text("- O -", style: AppTypography.h3TitleBlack),
+                GestureDetector(
+                  onTap: () {
+                    context.go("/login/signup");
+                  },
+                  child: Text(
+                    'Crea una nueva cuenta',
+                    textAlign: TextAlign.center,
+                    style: AppTypography.h3TitleBlack,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 )
               ],
             ),

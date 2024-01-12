@@ -5,5 +5,6 @@ abstract class LoginRepository {
   Future<LoginResponse> login(LoginFormEntity loginForm);
   Future<void> logout();
   Future<String?> getToken();
+  Future<String?> getEmail();
   Future<LoginResponse> verifyOtp(int totp);
 }

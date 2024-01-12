@@ -5,16 +5,13 @@ import 'package:recruitment/core/constants/constants.dart';
 import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/core/resources/typography.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:recruitment/features/login/presentation/pages/login_page.dart';
-import 'package:recruitment/features/news/domain/repositories/articles_repository.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_bloc.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_event.dart';
 import 'package:recruitment/features/news/presentation/widgets/article-tile.dart';
-import 'package:recruitment/features/news/presentation/widgets/button.dart';
-import 'package:recruitment/features/news/presentation/widgets/drawer.dart';
-import 'package:recruitment/features/news/presentation/widgets/navigation-bar.dart';
-
+import 'package:recruitment/core/widgets/button.dart';
+import 'package:recruitment/core/widgets/drawer.dart';
 import '../../../../core/get_it/get_it.dart';
+import '../../../../core/widgets/navigation-bar.dart';
 import '../../../login/presentation/bloc/login_bloc.dart';
 import '../bloc/news_state.dart';
 
@@ -86,17 +83,6 @@ class _NewsPageState extends State<NewsPage> {
                 }),
                 title: Text(appTitle, style: AppTypography.h1TitleWhite),
                 centerTitle: true,
-                actions: [
-                  IconButton(
-                    icon: const FaIcon(FontAwesomeIcons.doorOpen, color: Colors.white),
-                    onPressed: () {
-                      loginBloc.add(
-                          LogoutRequestEvent()
-                      );
-                      context.go("/login");
-                    },
-                  )
-                ],
               ),
               body: ListView(
                 physics: const NeverScrollableScrollPhysics(),
@@ -109,7 +95,7 @@ class _NewsPageState extends State<NewsPage> {
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25),
                         ),
-                        color: Colors.white,
+                        color: AppColors.scaffoldBackground,
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
@@ -127,7 +113,7 @@ class _NewsPageState extends State<NewsPage> {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: Text(
-                              'Headlines:',
+                              'Titulares:',
                               style: AppTypography.h2TitleBlack,
                             ),
                           ),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'package:recruitment/core/resources/login_response.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';
@@ -33,8 +34,8 @@ class RemoteLoginDataSource {
           );
         }
         return LoginSuccessResponse(
-            accessToken: body["data"]["access_token"],
-            mfaRequired: body["data"]["mfa_required"]
+          userEmail: body["data"]["email"],
+          accessToken: body["data"]["access_token"],
         );
       }
       return LoginErrorResponse(message: body["message"]);
@@ -63,8 +64,8 @@ class RemoteLoginDataSource {
       final body = jsonDecode(response.body);
       if(response.statusCode == 200) {
         return LoginSuccessResponse(
-            accessToken: body["data"]["access_token"],
-            mfaRequired: body["data"]["mfa_required"]
+          accessToken: body["data"]["access_token"],
+          userEmail: body["data"]["email"],
         );
       }
       return LoginErrorResponse(message: body["message"]);

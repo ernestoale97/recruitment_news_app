@@ -82,9 +82,6 @@ class _LoginFormState extends State<LoginForm> {
                   context.go("/login/verify-totp");
                 }
                 if (state is LoginSuccess || state is LoggedInState) {
-                  /*newsBloc.add(
-                      FetchNewsEvent()
-                  );*/
                   context.go("/");
                 }
               },
@@ -94,6 +91,12 @@ class _LoginFormState extends State<LoginForm> {
                 }
                 return AppCustomButton(
                     onTap: () {
+                      if (_passwordController.text.isEmpty ||  _emailController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Debe llenar todos los campos"),
+                        ));
+                        return;
+                      }
                       loginBloc.add(
                           LoginRequestEvent(
                               loginForm: LoginFormEntity(
@@ -104,7 +107,7 @@ class _LoginFormState extends State<LoginForm> {
                       );
                     },
                     width: MediaQuery.of(context).size.width * 0.87,
-                    text: "Sign In",
+                    text: "Autenticar",
                 );
               },
             )

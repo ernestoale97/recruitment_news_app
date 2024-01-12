@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recruitment/features/enable_totp/presentation/bloc/enable_totp_bloc.dart';
+import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
-import 'package:recruitment/features/news/presentation/bloc/news_event.dart';
-
 import 'config/router/app_router.dart';
 import 'core/get_it/get_it.dart';
-import 'features/news/presentation/bloc/news_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +37,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        scaffoldBackgroundColor: AppColors.scaffoldBackground,
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: AppColors.blue,
+            systemNavigationBarColor: AppColors.blue, // Navigation bar
+            statusBarIconBrightness: Brightness.light,
+            statusBarBrightness: Brightness.light,
+          ),
+        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       routerConfig: router,

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
 class AppCustomButton extends StatefulWidget {
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String text;
   final double width;
-  const AppCustomButton({super.key, required this.text, required this.onTap, required this.width});
+  const AppCustomButton({super.key, required this.text, this.onTap, required this.width});
 
   @override
   State<AppCustomButton> createState() => _AppCustomButtonState();
@@ -18,7 +18,7 @@ class _AppCustomButtonState extends State<AppCustomButton> {
       child: Container(
         width: widget.width,
         decoration: BoxDecoration(
-          color: const Color(0xff1f41bb),
+          color: widget.onTap != null ? const Color(0xff1f41bb) : const Color(0xffc5c5c5),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(

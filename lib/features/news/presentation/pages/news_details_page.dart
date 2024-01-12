@@ -22,8 +22,8 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         backgroundColor: AppColors.blue,
+        centerTitle: true,
         leading: Builder(builder: (BuildContext context) {
           return IconButton(
             icon: const FaIcon(FontAwesomeIcons.arrowLeft, color: Colors.white),
@@ -32,11 +32,25 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
             },
           );
         }),
+        title: Text("Noticia", style: AppTypography.h1TitleWhite),
       ),
       body: ListView(
         children: [
           Container(
+            margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 0.2,
+                  blurRadius: 2,
+                  offset: const Offset(1, 1), // changes position of shadow
+                ),
+              ],
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,

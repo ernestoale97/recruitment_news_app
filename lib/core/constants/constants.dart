@@ -2,8 +2,8 @@ const String appTitle = "NewsApp";
 const String newsApiUrl = "https://newsapi.org/v2/";
 const String newsApiKey = '4516e04637cc4da6a8e173104c8943af';
 const String newsQueryCountry = 'us';
-const String newsQueryCategory = 'technology';
+const String newsQueryCategory = 'entertainment';
 const String defaultImage =
-    "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg";
+    "https://www.yiwubazaar.com/resources/assets/images/default-product.jpg";
 
-const String loginApiUrl = "http://192.168.172.184:7100";
+const String loginApiUrl = "http://192.168.172.184:7700";

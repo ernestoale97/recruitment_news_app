@@ -12,7 +12,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   }
 
   Future<void> _fetchNews(FetchNewsEvent event, Emitter<NewsState> emit) async {
-    log("fetch");
     emit(FetchingNewsState());
     try {
       final data = await _articleRepository.getArticles();

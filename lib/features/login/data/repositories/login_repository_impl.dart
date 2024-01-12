@@ -18,6 +18,7 @@ class LoginRepositoryImpl implements LoginRepository {
     if (response is LoginSuccessResponse) {
       await _localLoginDataSource.clearStorage();
       await _localLoginDataSource.saveAccessToken(response.accessToken);
+      await _localLoginDataSource.saveUserEmail(response.userEmail);
     }
     if (response is LoginTotpRequiredResponse) {
       await _localLoginDataSource.clearStorage();
@@ -44,5 +45,10 @@ class LoginRepositoryImpl implements LoginRepository {
   @override
   Future<String?> getToken() {
     return _localLoginDataSource.getAccessToken();
+  }
+
+  @override
+  Future<String?> getEmail() {
+    return _localLoginDataSource.getUserEmail();
   }
 }
