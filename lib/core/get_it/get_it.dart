@@ -11,6 +11,8 @@ import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
 import 'package:recruitment/features/news/data/repositories/news_repository_impl.dart';
 import 'package:recruitment/features/news/domain/use_cases/fetch_news_usecase.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_bloc.dart';
+import 'package:recruitment/features/settings/enable_totp/domain/use_cases/activate_totp_usecase.dart';
+import 'package:recruitment/features/settings/enable_totp/domain/use_cases/generate_totp_usecase.dart';
 import 'package:recruitment/features/signup/data/data_sources/signup_data_source.dart';
 import 'package:recruitment/features/signup/data/repositories/signup_repository_impl.dart';
 import 'package:recruitment/features/signup/domain/repositories/signup_repository.dart';
@@ -51,10 +53,12 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<LogoutUseCase>(LogoutUseCase(sl()));
   sl.registerSingleton<CheckLoggedInUseCase>(CheckLoggedInUseCase(sl()));
   sl.registerSingleton<FetchNewsUseCase>(FetchNewsUseCase(sl()));
+  sl.registerSingleton<GenerateTotpUseCase>(GenerateTotpUseCase(sl()));
+  sl.registerSingleton<ActivateTotpUseCase>(ActivateTotpUseCase(sl()));
   // Blocs
   sl.registerFactory(() => NewsBloc(sl()));
   sl.registerFactory(() => LoginBloc(sl(), sl(), sl(), sl()));
   sl.registerFactory(() => SignupBloc(sl()));
-  sl.registerFactory(() => EnableTotpBloc(sl()));
+  sl.registerFactory(() => EnableTotpBloc(sl(), sl()));
   // Storage
 }

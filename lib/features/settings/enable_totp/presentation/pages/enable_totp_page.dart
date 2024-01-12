@@ -19,7 +19,7 @@ class _EnableTotpPageState extends State<EnableTotpPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<EnableTotpBloc>(
-      create: (_) => EnableTotpBloc(inject())..add(GenerateTotpEvent()),
+      create: (_) => EnableTotpBloc(inject(), inject())..add(GenerateTotpEvent()),
       child: BlocConsumer<EnableTotpBloc, EnableTotpState>(
         listener: (context, state) {
           EnableTotpBloc enableTotpBloc = BlocProvider.of(context);

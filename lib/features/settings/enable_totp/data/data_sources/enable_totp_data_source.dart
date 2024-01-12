@@ -4,10 +4,9 @@ import 'dart:io';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:recruitment/features/login/data/data_sources/local/local_login_data_source.dart';
 import 'package:http/http.dart' as http;
-
 import '../../../../../core/constants/constants.dart';
-import '../../domain/entity/activate_totp_response.dart';
-import '../../domain/entity/generate_totp_response.dart';
+import '../../domain/entities/activate_totp_response.dart';
+import '../../domain/entities/generate_totp_response.dart';
 
 class EnableTotpDataSource {
   final LocalLoginDataSource _localLoginDataSource;
