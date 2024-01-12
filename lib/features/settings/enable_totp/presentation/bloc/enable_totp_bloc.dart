@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:recruitment/features/settings/enable_totp/data/models/activate_totp_response.dart';
-import 'package:recruitment/features/settings/enable_totp/data/models/generate_totp_response.dart';
+import 'package:recruitment/features/settings/enable_totp/domain/entity/activate_totp_response.dart';
+import 'package:recruitment/features/settings/enable_totp/domain/entity/generate_totp_response.dart';
 import 'package:recruitment/features/settings/enable_totp/domain/repositories/enable_totp_repository.dart';
 
 part 'enable_totp_event.dart';

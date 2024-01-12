@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:recruitment/features/signup/domain/entities/signup_form.dart';
 import 'package:http/http.dart' as http;
 import '../../../../core/constants/constants.dart';
-import '../models/signup_response.dart';
+import '../../domain/entities/signup_response.dart';
 
 class SignupDataSource {
     Future<SignupResponse> signup(SignupFormEntity signupFormEntity) async {

@@ -6,8 +6,8 @@ import 'package:recruitment/features/login/data/data_sources/local/local_login_d
 import 'package:http/http.dart' as http;
 
 import '../../../../../core/constants/constants.dart';
-import '../models/activate_totp_response.dart';
-import '../models/generate_totp_response.dart';
+import '../../domain/entity/activate_totp_response.dart';
+import '../../domain/entity/generate_totp_response.dart';
 
 class EnableTotpDataSource {
   final LocalLoginDataSource _localLoginDataSource;

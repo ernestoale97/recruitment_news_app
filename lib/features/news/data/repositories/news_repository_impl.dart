@@ -1,15 +1,16 @@
 import 'dart:io';
 import 'package:recruitment/features/news/domain/entities/fetch_news_response.dart';
-import 'package:recruitment/features/news/domain/repositories/articles_repository.dart';
+import 'package:recruitment/features/news/domain/repositories/news_repository.dart';
 import 'package:recruitment/features/news/data/data_sources/news_data_source.dart';
 
-class ArticlesRepositoryImpl implements ArticleRepository {
-  const ArticlesRepositoryImpl(this._newsDataSource);
+class NewsRepositoryImpl implements NewsRepository {
+  const NewsRepositoryImpl(this._newsDataSource);
   final NewsDataSource _newsDataSource;
+
   @override
-  Future<FetchNewsResponse> getArticles() async {
+  Future<FetchNewsResponse> fetchNews() async {
     try {
-      return await _newsDataSource.getArticles();
+      return await _newsDataSource.fetchNews();
     } on HttpException catch(e) {
       return FetchNewsFailed(e);
     }

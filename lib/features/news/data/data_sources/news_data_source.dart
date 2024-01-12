@@ -6,7 +6,7 @@ import 'package:recruitment/features/news/domain/entities/fetch_news_response.da
 import 'package:recruitment/features/news/data/models/article.dart';
 
 class NewsDataSource {
-  Future<FetchNewsResponse> getArticles() async {
+  Future<FetchNewsResponse> fetchNews() async {
     try {
       final uri = Uri.parse("$newsApiUrl/top-headlines?country=$newsQueryCountry&category=$newsQueryCategory&apiKey=$newsApiKey");
       http.Response response = await http.get(uri);

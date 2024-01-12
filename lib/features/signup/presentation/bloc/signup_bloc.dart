@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:recruitment/features/signup/data/models/signup_response.dart';
+import 'package:recruitment/features/signup/domain/entities/signup_response.dart';
 
 import '../../domain/entities/signup_form.dart';
 import '../../domain/use_cases/signup_usecase.dart';

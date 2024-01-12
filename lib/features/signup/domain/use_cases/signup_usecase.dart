@@ -1,4 +1,4 @@
-import 'package:recruitment/features/signup/data/models/signup_response.dart';
+import 'package:recruitment/features/signup/domain/entities/signup_response.dart';
 import 'package:recruitment/features/signup/domain/repositories/signup_repository.dart';
 import '../entities/signup_form.dart';
 
