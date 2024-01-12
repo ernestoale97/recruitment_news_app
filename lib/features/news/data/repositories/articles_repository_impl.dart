@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'package:recruitment/features/news/data/models/fetch_news_response.dart';
+import 'package:recruitment/features/news/domain/entities/fetch_news_response.dart';
 import 'package:recruitment/features/news/domain/repositories/articles_repository.dart';
-import '../data_sources/news_data_source.dart';
+import 'package:recruitment/features/news/data/data_sources/news_data_source.dart';
 
-class ArticlesRepositoryImplementation implements ArticleRepository {
-  const ArticlesRepositoryImplementation(this._newsDataSource);
+class ArticlesRepositoryImpl implements ArticleRepository {
+  const ArticlesRepositoryImpl(this._newsDataSource);
   final NewsDataSource _newsDataSource;
   @override
   Future<FetchNewsResponse> getArticles() async {

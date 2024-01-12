@@ -8,7 +8,7 @@ import 'package:recruitment/features/login/domain/use_cases/check_logged_in_usec
 import 'package:recruitment/features/login/domain/use_cases/login_usecase.dart';
 import 'package:recruitment/features/login/domain/use_cases/verify_otp_usecase.dart';
 import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
-import 'package:recruitment/features/news/data/repositories/articles_repository_implementation.dart';
+import 'package:recruitment/features/news/data/repositories/articles_repository_impl.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_bloc.dart';
 import 'package:recruitment/features/signup/data/data_sources/signup_data_source.dart';
 import 'package:recruitment/features/signup/data/repositories/signup_repository_impl.dart';
@@ -39,7 +39,7 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<RemoteLoginDataSource>(RemoteLoginDataSource(sl()));
   sl.registerSingleton<EnableTotpDataSource>(EnableTotpDataSource(sl()));
   // Repository
-  sl.registerLazySingleton<ArticleRepository>(() => ArticlesRepositoryImplementation(sl()));
+  sl.registerLazySingleton<ArticleRepository>(() => ArticlesRepositoryImpl(sl()));
   sl.registerLazySingleton<LoginRepository>(() => LoginRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton<SignupRepository>(() => SignupRepositoryImpl(sl()));
   sl.registerLazySingleton<EnableTotpRepository>(() => EnableTotpRepositoryImpl(sl()));

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:recruitment/features/login/data/models/login_response.dart';
+import 'package:recruitment/features/login/domain/entities/login_response.dart';
 import 'package:recruitment/features/login/data/data_sources/local/local_login_data_source.dart';
 import 'package:recruitment/features/login/data/data_sources/remote/remote_login_data_source.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';

@@ -1,4 +1,4 @@
-import 'package:recruitment/features/login/data/models/login_response.dart';
+import 'package:recruitment/features/login/domain/entities/login_response.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';
 
 abstract class LoginRepository {

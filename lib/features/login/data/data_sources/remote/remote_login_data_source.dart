@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:recruitment/features/login/data/models/login_response.dart';
+import 'package:recruitment/features/login/domain/entities/login_response.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';
 import '../../../../../core/constants/constants.dart';
 import 'package:http/http.dart' as http;

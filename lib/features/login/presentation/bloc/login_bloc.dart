@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:recruitment/features/login/data/models/login_response.dart';
+import 'package:recruitment/features/login/domain/entities/login_response.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';
 import 'package:recruitment/features/login/domain/use_cases/verify_otp_usecase.dart';
 import '../../domain/use_cases/check_logged_in_usecase.dart';

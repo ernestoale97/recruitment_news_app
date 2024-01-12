@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:recruitment/core/constants/constants.dart';
-import 'package:recruitment/features/news/data/models/fetch_news_response.dart';
+import 'package:recruitment/features/news/domain/entities/fetch_news_response.dart';
 import 'package:recruitment/features/news/data/models/article.dart';
 
 class NewsDataSource {
