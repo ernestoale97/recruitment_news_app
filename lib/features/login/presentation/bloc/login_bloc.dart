@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -66,7 +64,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       } else if (response is LoginErrorResponse) {
         emit(VerifyFailTotpState(response.message));
       }
-    } on Object catch (e) {
+    } on Object catch (_) {
       emit(const VerifyFailTotpState("There was an error while trying to verify 2FA"));
     }
   }

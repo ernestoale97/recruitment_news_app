@@ -1,12 +1,10 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 import 'package:recruitment/features/login/domain/entities/login_response.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';
-import '../../../../../core/constants/constants.dart';
+import 'package:recruitment/core/constants/constants.dart';
 import 'package:http/http.dart' as http;
-
-import '../local/local_login_data_source.dart';
+import 'package:recruitment/features/login/data/data_sources/local/local_login_data_source.dart';
 
 class RemoteLoginDataSource {
   final LocalLoginDataSource _localLoginDataSource;
