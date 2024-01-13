@@ -43,9 +43,6 @@ class _LoginFormState extends State<LoginForm> {
                 if (value!.isEmpty) {
                   return 'Please enter your email';
                 }
-                if (false) {
-                  return 'Please enter a valid E-Mail';
-                }
                 return null;
               },
               inputType: TextInputType.emailAddress,
