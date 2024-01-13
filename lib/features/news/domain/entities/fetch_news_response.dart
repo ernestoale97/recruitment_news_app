@@ -1,10 +1,8 @@
-import 'dart:io';
-
 import 'package:recruitment/features/news/data/models/article.dart';
 
 abstract class FetchNewsResponse {
   final List<Article>? data;
-  final HttpException? error;
+  final Exception? error;
 
   const FetchNewsResponse({this.data, this.error});
 }
@@ -14,5 +12,5 @@ class FetchNewsSuccess extends FetchNewsResponse {
 }
 
 class FetchNewsFailed extends FetchNewsResponse {
-  const FetchNewsFailed(HttpException? error) : super(error: error);
+  const FetchNewsFailed(Exception? error) : super(error: error);
 }
