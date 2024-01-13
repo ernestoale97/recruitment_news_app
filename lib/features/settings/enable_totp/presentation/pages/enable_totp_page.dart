@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/core/resources/typography.dart';
-import '../../../../../core/get_it/get_it.dart';
+import '../../../../../service_locator.dart';
 import '../bloc/enable_totp_bloc.dart';
 import '../widgets/enable_totp_form.dart';
 

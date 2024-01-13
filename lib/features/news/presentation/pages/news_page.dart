@@ -10,7 +10,7 @@ import 'package:recruitment/features/news/presentation/bloc/news_event.dart';
 import 'package:recruitment/features/news/presentation/widgets/article-tile.dart';
 import 'package:recruitment/core/widgets/button.dart';
 import 'package:recruitment/core/widgets/drawer.dart';
-import '../../../../core/get_it/get_it.dart';
+import '../../../../service_locator.dart';
 import '../../../../core/widgets/navigation-bar.dart';
 import '../../../login/presentation/bloc/login_bloc.dart';
 import '../bloc/news_state.dart';

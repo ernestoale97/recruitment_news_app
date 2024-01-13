@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recruitment/core/get_it/get_it.dart';
+import 'package:recruitment/service_locator.dart';
 import 'package:recruitment/core/resources/typography.dart';
 import 'package:recruitment/features/signup/presentation/bloc/signup_bloc.dart';
 import 'package:recruitment/features/signup/presentation/widgets/signup_form.dart';
