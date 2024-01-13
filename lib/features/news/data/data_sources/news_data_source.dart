@@ -17,7 +17,7 @@ class NewsDataSourceImpl implements NewsDataSource {
   Future<FetchNewsResponse> fetchNews() async {
     try {
       final uri = Uri.parse("$newsApiUrl/top-headlines?country=$newsQueryCountry&category=$newsQueryCategory&apiKey=$newsApiKey");
-      http.Response response = await client.get(uri);
+      http.Response response = await client.get(uri).timeout(const Duration(seconds: 30));
       final body = response.body != "" ? jsonDecode(response.body) : "";
       if (response.statusCode != 200) {
         return FetchNewsFailed(HttpException(body["message"] ?? "Error al obtener las noticias"));
