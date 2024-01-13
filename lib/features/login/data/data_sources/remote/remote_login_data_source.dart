@@ -6,14 +6,21 @@ import 'package:recruitment/core/constants/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:recruitment/features/login/data/data_sources/local/local_login_data_source.dart';
 
-class RemoteLoginDataSource {
-  final LocalLoginDataSource _localLoginDataSource;
-  RemoteLoginDataSource(this._localLoginDataSource);
+abstract class RemoteLoginDataSource {
+  Future<LoginResponse> login(LoginFormEntity loginForm);
+  Future<LoginResponse> verifyTotp(int totp);
+}
 
+class RemoteLoginDataSourceImpl implements RemoteLoginDataSource {
+  final LocalLoginDataSource _localLoginDataSource;
+  final http.Client client;
+  RemoteLoginDataSourceImpl(this._localLoginDataSource, this.client);
+
+  @override
   Future<LoginResponse> login(LoginFormEntity loginForm) async {
     try {
       final uri = Uri.parse("$loginApiUrl/login");
-      http.Response response = await http.post(
+      http.Response response = await client.post(
           uri,
           headers: {
             "Content-Type": "application/json "
@@ -42,6 +49,7 @@ class RemoteLoginDataSource {
     }
   }
 
+  @override
   Future<LoginResponse> verifyTotp(int totp) async {
     try {
       String? token =  await _localLoginDataSource.getVerifyTotpToken();
@@ -49,7 +57,7 @@ class RemoteLoginDataSource {
         return LoginErrorResponse(message: 'Verify token needed');
       }
       final uri = Uri.parse("$loginApiUrl/verify-totp");
-      http.Response response = await http.post(
+      http.Response response = await client.post(
           uri,
           headers: {
             "Content-Type": "application/json",

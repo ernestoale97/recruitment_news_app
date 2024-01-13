@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
 import 'config/router/app_router.dart';
-import 'service_locator.dart';
+import 'injection_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

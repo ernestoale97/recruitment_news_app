@@ -25,6 +25,7 @@ import 'package:recruitment/features/settings/enable_totp/data/repositories/enab
 import 'package:recruitment/features/settings/enable_totp/domain/repositories/enable_totp_repository.dart';
 import 'package:recruitment/features/settings/enable_totp/presentation/bloc/enable_totp_bloc.dart';
 import 'package:recruitment/features/signup/domain/use_cases/signup_usecase.dart';
+import 'package:http/http.dart' as http;
 
 final sl = GetIt.instance;
 
@@ -33,32 +34,33 @@ T inject<T extends Object>() {
 }
 
 Future<void> initializeDependencies() async {
-  const FlutterSecureStorage sharedPref = FlutterSecureStorage();
-  sl.registerSingleton(sharedPref);
+  // Storages
+  sl.registerSingleton(const FlutterSecureStorage());
+  // Clients
+  sl.registerSingleton(http.Client());
   // Data sources
-  sl.registerSingleton<NewsDataSource>(NewsDataSource());
-  sl.registerSingleton<LocalLoginDataSource>(LocalLoginDataSource(sl()));
-  sl.registerSingleton<SignupDataSource>(SignupDataSource());
-  sl.registerSingleton<RemoteLoginDataSource>(RemoteLoginDataSource(sl()));
-  sl.registerSingleton<EnableTotpDataSource>(EnableTotpDataSource(sl()));
-  // Repository
-  sl.registerLazySingleton<NewsRepository>(() => NewsRepositoryImpl(sl()));
+  sl.registerSingleton<LocalLoginDataSource>(LocalLoginDataSourceImpl(sl(), sl()));
+  sl.registerSingleton<RemoteLoginDataSource>(RemoteLoginDataSourceImpl(sl(), sl()));
+  sl.registerSingleton<SignupDataSource>(SignupDataSourceImpl(sl()));
+  sl.registerSingleton<NewsDataSource>(NewsDataSourceImpl(sl()));
+  sl.registerSingleton<EnableTotpDataSource>(EnableTotpDataSourceImpl(sl(), sl()));
+  // Repositories
   sl.registerLazySingleton<LoginRepository>(() => LoginRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton<SignupRepository>(() => SignupRepositoryImpl(sl()));
+  sl.registerLazySingleton<NewsRepository>(() => NewsRepositoryImpl(sl()));
   sl.registerLazySingleton<EnableTotpRepository>(() => EnableTotpRepositoryImpl(sl()));
   // UseCases
   sl.registerSingleton<LoginUseCase>(LoginUseCase(sl()));
   sl.registerSingleton<SignupUseCase>(SignupUseCase(sl()));
-  sl.registerSingleton<VerifyOtpUseCase>(VerifyOtpUseCase(sl()));
   sl.registerSingleton<LogoutUseCase>(LogoutUseCase(sl()));
   sl.registerSingleton<CheckLoggedInUseCase>(CheckLoggedInUseCase(sl()));
   sl.registerSingleton<FetchNewsUseCase>(FetchNewsUseCase(sl()));
   sl.registerSingleton<GenerateTotpUseCase>(GenerateTotpUseCase(sl()));
   sl.registerSingleton<ActivateTotpUseCase>(ActivateTotpUseCase(sl()));
+  sl.registerSingleton<VerifyOtpUseCase>(VerifyOtpUseCase(sl()));
   // Blocs
-  sl.registerFactory(() => NewsBloc(sl()));
   sl.registerFactory(() => LoginBloc(sl(), sl(), sl(), sl()));
   sl.registerFactory(() => SignupBloc(sl()));
+  sl.registerFactory(() => NewsBloc(sl()));
   sl.registerFactory(() => EnableTotpBloc(sl(), sl()));
-  // Storage
 }

@@ -8,10 +8,17 @@ import '../../../../../core/constants/constants.dart';
 import '../../domain/entities/activate_totp_response.dart';
 import '../../domain/entities/generate_totp_response.dart';
 
-class EnableTotpDataSource {
-  final LocalLoginDataSource _localLoginDataSource;
-  EnableTotpDataSource(this._localLoginDataSource);
+abstract class EnableTotpDataSource {
+  Future<ActivateTotpResponse> activateTotp(String totp);
+  Future<GenerateTotpResponse> generateTotp();
+}
 
+class EnableTotpDataSourceImpl extends EnableTotpDataSource {
+  final LocalLoginDataSource _localLoginDataSource;
+  final http.Client client;
+  EnableTotpDataSourceImpl(this._localLoginDataSource, this.client);
+
+  @override
   Future<ActivateTotpResponse> activateTotp(String totp) async {
     try {
       String? token =  await _localLoginDataSource.getAccessToken();
@@ -39,6 +46,8 @@ class EnableTotpDataSource {
       return ActivateTotpFailResponse(message: e.message);
     }
   }
+
+  @override
   Future<GenerateTotpResponse> generateTotp() async {
     try {
       String? token =  await _localLoginDataSource.getAccessToken();

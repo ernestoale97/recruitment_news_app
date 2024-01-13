@@ -5,11 +5,19 @@ import 'package:http/http.dart' as http;
 import '../../../../core/constants/constants.dart';
 import '../../domain/entities/signup_response.dart';
 
-class SignupDataSource {
+abstract class SignupDataSource {
+    Future<SignupResponse> signup(SignupFormEntity signupFormEntity);
+}
+
+class SignupDataSourceImpl extends SignupDataSource{
+    final http.Client client;
+    SignupDataSourceImpl(this.client);
+
+    @override
     Future<SignupResponse> signup(SignupFormEntity signupFormEntity) async {
         try {
             final uri = Uri.parse("$loginApiUrl/signup");
-            http.Response response = await http.post(
+            http.Response response = await client.post(
                 uri,
                 headers: {
                     "Content-Type": "application/json "
