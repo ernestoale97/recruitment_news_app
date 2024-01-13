@@ -1,17 +1,10 @@
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/core/widgets/app_custom_button.dart';
 import 'package:recruitment/features/login/domain/entities/login_form.dart';
 import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
 import 'package:recruitment/core/widgets/text_input.dart';
-import 'package:recruitment/features/news/presentation/bloc/news_bloc.dart';
-import 'package:recruitment/features/news/presentation/bloc/news_event.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});

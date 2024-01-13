@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:recruitment/features/settings/enable_totp/domain/repositories/enable_totp_repository.dart';
 import 'package:recruitment/features/settings/enable_totp/domain/use_cases/generate_totp_usecase.dart';
 import '../../domain/entities/activate_totp_response.dart';
 import '../../domain/entities/generate_totp_response.dart';

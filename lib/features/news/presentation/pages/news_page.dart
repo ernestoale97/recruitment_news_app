@@ -46,7 +46,6 @@ class _NewsPageState extends State<NewsPage> {
         },
         builder: (context, state) {
           final NewsBloc newsBloc = BlocProvider.of(context);
-          final LoginBloc loginBloc = BlocProvider.of(context);
           if (state is LoginInitial || state is LoggedOutState) {
             return const Scaffold(
               body: SizedBox(height: 0),
