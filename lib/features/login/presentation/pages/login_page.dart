@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/core/resources/typography.dart';
 import 'package:recruitment/features/login/presentation/widgets/login_form.dart';
 

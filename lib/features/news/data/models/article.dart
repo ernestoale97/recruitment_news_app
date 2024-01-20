@@ -5,26 +5,16 @@ import '../../domain/entities/article_entity.dart';
 
 class Article extends ArticleEntity {
   const Article({
-    int? id,
-    ArticleSource? source,
-    String? author,
-    String? title,
-    String? description,
-    String? url,
-    String? urlToImage,
-    String? publishedAt,
-    String? content,
-  }) : super(
-    id: id,
-    source: source,
-    author: author,
-    title: title,
-    description: description,
-    url: url,
-    urlToImage: urlToImage,
-    publishedAt: publishedAt,
-    content: content,
-  );
+    super.id,
+    super.source,
+    super.author,
+    super.title,
+    super.description,
+    super.url,
+    super.urlToImage,
+    super.publishedAt,
+    super.content,
+  });
 
   factory Article.fromJson(Map<String, dynamic> map) {
     return Article(

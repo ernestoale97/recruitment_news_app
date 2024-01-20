@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recruitment/features/news/presentation/bloc/news_event.dart';
+
 import '../../features/login/presentation/bloc/login_bloc.dart';
 import '../../features/news/presentation/bloc/news_bloc.dart';
 
@@ -20,18 +21,16 @@ class _AppNavigationBarState extends State<AppNavigationBar> {
     final LoginBloc loginBloc = BlocProvider.of(context);
     return BottomNavigationBar(
       onTap: (index) {
-        if(index == 0) {
+        if (index == 0) {
           newsBloc.add(
             FetchNewsEvent(),
           );
         }
-        if(index == 1) {
+        if (index == 1) {
           context.go("/settings");
         }
-        if(index == 2) {
-          loginBloc.add(
-              LogoutRequestEvent()
-          );
+        if (index == 2) {
+          loginBloc.add(LogoutRequestEvent());
           context.go("/login");
         }
       },

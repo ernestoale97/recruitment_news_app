@@ -23,6 +23,6 @@ class AppDrawerHeader extends StatelessWidget {
         email,
         style: AppTypography.h3TitleWhite,
       ),
-    );;
+    );
   }
 }

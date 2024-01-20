@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
+
 import 'config/router/app_router.dart';
 import 'injection_container.dart';
 
@@ -20,11 +21,11 @@ class AppState extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LoginBloc>(
-          create: (_) => LoginBloc(inject(), inject(), inject(), inject())..add(
-              CheckLoggedInEvent()
-          ),
+          create: (_) => LoginBloc(inject(), inject(), inject(), inject())
+            ..add(CheckLoggedInEvent()),
         ),
-      ], child: const MyApp(),
+      ],
+      child: const MyApp(),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -6,7 +5,6 @@ import 'package:recruitment/features/signup/presentation/bloc/signup_bloc.dart';
 
 import '../../../../core/widgets/app_custom_button.dart';
 import '../../../../core/widgets/text_input.dart';
-import '../../../login/domain/entities/login_form.dart';
 import '../../domain/entities/signup_form.dart';
 
 class SignupForm extends StatefulWidget {

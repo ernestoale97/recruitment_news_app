@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recruitment/core/resources/typography.dart';
 import 'package:recruitment/features/news/domain/entities/article_entity.dart';
+
 import '../../../../core/resources/colors.dart';
 import '../../../../core/resources/utils.dart';
 
@@ -27,7 +28,7 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
         leading: Builder(builder: (BuildContext context) {
           return IconButton(
             icon: const FaIcon(FontAwesomeIcons.arrowLeft, color: Colors.white),
-            onPressed: (){
+            onPressed: () {
               context.pop();
             },
           );
@@ -86,46 +87,44 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
                 CachedNetworkImage(
                     imageUrl: widget.article.urlToImage!,
                     imageBuilder: (context, imageProvider) => ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
-                      child: Container(
-                        width: screenWidth,
-                        height: 250,
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.08),
-                            image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover
-                            )
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Container(
+                            width: screenWidth,
+                            height: 250,
+                            decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.08),
+                                image: DecorationImage(
+                                    image: imageProvider, fit: BoxFit.cover)),
+                          ),
                         ),
-                      ),
-                    ),
-                    progressIndicatorBuilder: (context, url, downloadProgress) => ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
-                      child: Container(
-                        width: screenWidth,
-                        height: 250,
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.08),
+                    progressIndicatorBuilder: (context, url,
+                            downloadProgress) =>
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Container(
+                            width: screenWidth,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.08),
+                            ),
+                            child: const CupertinoActivityIndicator(radius: 11),
+                          ),
                         ),
-                        child: const CupertinoActivityIndicator(radius: 11),
-                      ),
-                    ),
                     errorWidget: (context, url, error) => ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
-                      child: Container(
-                        width: screenWidth,
-                        height: 250,
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.08),
-                        ),
-                        child: const Icon(Icons.error),
-                      ),
-                    )
-                ),
+                          borderRadius: BorderRadius.circular(15.0),
+                          child: Container(
+                            width: screenWidth,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.08),
+                            ),
+                            child: const Icon(Icons.error),
+                          ),
+                        )),
                 const SizedBox(height: 18),
                 Text(
                   widget.article.source?.name ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFFDE4519),
                     fontSize: 12,
                     fontFamily: 'Archivo',
@@ -137,7 +136,7 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
                 const SizedBox(height: 10),
                 Text(
                   widget.article.title ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFF222222),
                     fontSize: 25,
                     fontFamily: 'Archivo',
@@ -150,7 +149,7 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
                 const SizedBox(height: 10),
                 Text(
                   widget.article.content ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color(0xFF222222),
                     fontSize: 15,
                     fontFamily: 'SF Pro Display',
@@ -159,9 +158,9 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
                   textAlign: TextAlign.justify,
                 ),
                 const SizedBox(height: 10),
-                Text(
+                const Text(
                   "See full article in:",
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Color(0xFF222222),
                     fontSize: 12,
                     fontFamily: 'SF Pro Display',
@@ -170,8 +169,7 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
                     letterSpacing: -0.48,
                   ),
                 ),
-                Text(
-                    widget.article.url ?? "",
+                Text(widget.article.url ?? "",
                     style: const TextStyle(
                       color: Colors.blueAccent,
                       fontSize: 12,
@@ -179,8 +177,7 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
                       fontWeight: FontWeight.w400,
                       height: 0,
                       letterSpacing: -0.48,
-                    )
-                )
+                    ))
               ],
             ),
           ),

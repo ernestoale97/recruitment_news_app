@@ -5,5 +5,4 @@ const String newsQueryCountry = 'us';
 const String newsQueryCategory = 'entertainment';
 const String defaultImage =
     "https://www.yiwubazaar.com/resources/assets/images/default-product.jpg";
-
 const String loginApiUrl = "http://192.168.240.184:7800";

@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recruitment/core/resources/colors.dart';
 import 'package:recruitment/core/resources/typography.dart';
-import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
 import 'package:recruitment/core/widgets/drawer_header.dart';
+import 'package:recruitment/features/login/presentation/bloc/login_bloc.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
@@ -35,7 +34,7 @@ class _AppDrawerState extends State<AppDrawer> {
               }
               return UserAccountsDrawerHeader(
                 decoration: const BoxDecoration(color: AppColors.blue),
-                currentAccountPicture:  CircleAvatar(
+                currentAccountPicture: CircleAvatar(
                   radius: 60.0,
                   backgroundColor: const Color(0xFF778899),
                   child: Image.asset(
@@ -52,7 +51,10 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             leading: const FaIcon(FontAwesomeIcons.gear),
-            title: Text('Preferencias', style: AppTypography.h3TitleBlack,),
+            title: Text(
+              'Preferencias',
+              style: AppTypography.h3TitleBlack,
+            ),
             onTap: () {
               context.go("/settings");
             },
